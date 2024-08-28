@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Flappy Bird</title>
+    <meta name="theme-color" content="#0D1017">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+      @font-face {
+        font-family: 'spicyrice';
+        src: url('assets/font/spicyrice.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        margin: 0;
+        background-color: #000;
+      }
+      canvas {
+        border: 1px solid #000;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #009696;
+      }
+      div {
+        display: none;
+      }
+      p {
+        margin: 8px 16px;
+        padding: 0;
+        font-family: "spicyrice", Sans-Serif;
+        font-size: 18px;
+        background-color: transparent;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="assets/res/img/pipeN.png">
+      <img src="assets/res/img/pipeS.png">
+      <img src="assets/res/img/ground.png">
+    </div>
+    <p></p>
+    <canvas></canvas>
+    <script src="app/game.js"></script>
+  </body>
+</html>
