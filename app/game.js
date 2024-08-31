@@ -40,7 +40,7 @@ function init() {
     dy: 100,
     y: 0,
     width: 40,
-    height: 28,
+    height: 30, // 3:4
     flyPower: 12,
     flyTime: 0
   };
@@ -83,7 +83,7 @@ function draw() {
     pipes[i].x -= 2;
     
     // create pipes
-    if (pipes[i].x == 70) {
+    if (pipes[i].x == 64) {
       pipes.push({
         x: 240,
         y: Math.floor(Math.random() * 210) - 210
@@ -102,14 +102,16 @@ function draw() {
   
   // draw bird
   ctx.drawImage(d.bird.img, d.bird.dx, d.bird.dy, d.bird.width, d.bird.height);
+  d.bird.dy += d.bird.y;
 }
 
 function loop() {
   ctx.clearRect(0, 0, 240, 426);
   draw();
   
-  d.bird.dy += d.bird.y;
-  d.bird.y += gravity;
+  // gravity
+  if (d.bird.dy + d.bird.height >= 316) {init()}
+  else {d.bird.y += gravity}
   
   // keys pressed
   if (d.keys.pressed && d.bird.flyTime < 5 && d.bird.dy + d.bird.height > 0) {
@@ -117,9 +119,6 @@ function loop() {
     d.bird.dy -= d.bird.flyPower;
     d.bird.flyTime++;
   }
-  
-  // game over
-  if (d.bird.dy + d.bird.height >= 316) {init()}
   
   // scroll
   if (d.ground.x1 < -240) {d.ground.x1 = 240 + d.ground.x2 - 2} else {d.ground.x1 -= 2}
