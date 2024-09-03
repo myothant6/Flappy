@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <title>Flappy Bird</title>
-        <meta name="theme-color" content="#0D1017">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <style>
-            @font-face {
-                font-family: "spicyrice";
-                src: url("assets/font/spicyrice.ttf") format("truetype");
-                font-weight: normal;
-                font-style: normal;
-            }
-            body {
-                margin: 0;
-                background-color: #000;
-            }
-            canvas {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: #009696;
-            }
-            div {
-                display: none;
-            }
-        </style>
-    </head>
-    <body>
-        <div>
-            <img src="assets/res/img/pipeN.png">
-            <img src="assets/res/img/pipeS.png">
-            <img src="assets/res/img/ground.png">
-        </div>
-        <canvas></canvas>
-        <script src="app/game.js"></script>
-    </body>
+  <head>
+    <title>Flappy Bird</title>
+    <meta name="theme-color" content="#0D1017">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+      @font-face {
+        font-family: "spicyrice";
+        src: url("assets/font/spicyrice.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        margin: 0;
+        background-color: #000;
+      }
+      canvas {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #009696;
+      }
+      div {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="assets/res/img/bird.png">
+      <img src="assets/res/img/ground.png">
+      <img src="assets/res/img/pipeN.png">
+      <img src="assets/res/img/pipeS.png">
+    </div>
+    <canvas></canvas>
+    <script src="app/game.js"></script>
+  </body>
 </html>
