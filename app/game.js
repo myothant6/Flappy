@@ -20,7 +20,8 @@ const d = {
   bird: {},
   ground: {},
   pipeN: {},
-  pipeS: {}
+  pipeS: {},
+  background: {}
 };
 
 function scoreSystem() {
@@ -41,7 +42,6 @@ function init() {
     y: 0,
     width: 40,
     height: 30,
-    // 3:4
     flyPower: 10,
     flyTime: 0
   };
@@ -68,11 +68,24 @@ function init() {
     x: 300,
     y: Math.floor(Math.random() * 210) - 210
   };
+  
+  
+  d.background = {
+    img1: createImage("assets/res/img/background.png"),
+    x1: 0,
+    img2: createImage("assets/res/img/background2.png"),
+    x2: 240
+  };
 }
 
 init();
 
 function draw() {
+  // draw background
+  ctx.drawImage(d.background.img1, d.background.x1, 0);
+  ctx.drawImage(d.background.img2, d.background.x2, 0);
+  
+  
   // drawPipe
   for (let i = 0; i < pipes.length; i++) {
     ctx.drawImage(d.pipeN.img, pipes[i].x, pipes[i].y);
@@ -110,8 +123,8 @@ function draw() {
   d.bird.dy += d.bird.y;
   
   // set text
-  ctx.font = "16px serif"; // spicyrice
-  ctx.fillStyle = "#ff0";
+  ctx.font = "16px spicyrice"; // spicyrice
+  ctx.fillStyle = "#fff";
   ctx.fillText("Score: " + score, 4, 16);
 }
 
@@ -146,6 +159,18 @@ function loop() {
     d.ground.x2 -= 2;
   }
   
+  if (d.background.x1 < -240) {
+    d.background.x1 = 240 + d.background.x2 - 1;
+  } else {
+    d.background.x1 -= 1;
+  }
+  
+  if (d.background.x2 < -240) {
+    d.background.x2 = 240 + d.background.x1 - 1;
+  } else {
+    d.background.x2 -= 1;
+  }
+  
   requestAnimationFrame(loop);
 }
 
@@ -178,3 +203,19 @@ addEventListener("keyup", (e) => {
     break;
   }
 });
+
+// Function to request fullscreen
+function goFullScreen() {
+    if (canvas.requestFullscreen) {
+        canvas.requestFullscreen();
+    } else if (canvas.mozRequestFullScreen) { // Firefox
+        canvas.mozRequestFullScreen();
+    } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        canvas.webkitRequestFullscreen();
+    } else if (canvas.msRequestFullscreen) { // IE/Edge
+        canvas.msRequestFullscreen();
+    }
+}
+
+// Add an event listener to trigger fullscreen on a button click or any event
+document.getElementById('fullscreenButton').addEventListener('click', goFullScreen);
